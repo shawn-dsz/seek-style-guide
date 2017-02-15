@@ -5,13 +5,15 @@ import StarIcon from '../icons/StarIcon/StarIcon';
 import halfStar from './halfStar.svg';
 import Icon from '../icons/icon';
 
-const getPercent = (rating, i) => Math.round(Math.min(Math.max(rating - i, 0), 1) * 100);
+const getPercent = (rating, position) => Math.round(Math.min(Math.max(rating - position, 0), 1) * 100);
 
-const getStar = (percent, i, restProps) => {
+const getStar = (percent, key, starProps = {}) => {
   const props = {
-    key: i,
-    svgClassName: classnames(styles.icon, restProps.className)
+    ...starProps,
+    key,
+    svgClassName: classnames(styles.star, starProps.svgClassName)
   };
+
   if (percent >= 75) {
     return <StarIcon filled={true} {...props} />;
   }
@@ -23,20 +25,20 @@ const getStar = (percent, i, restProps) => {
   return <StarIcon {...props} />;
 };
 
-const renderStars = (rating, props) => {
+const renderStars = (rating, starProps) => {
   const stars = [];
-  for (let i = 0; i < 5; i++) {
-    const percent = getPercent(rating, i);
-    stars.push(getStar(percent, i, props));
+  for (let position = 0; position < 5; position++) {
+    const percent = getPercent(rating, position);
+    stars.push(getStar(percent, position, starProps));
   }
 
   return stars;
 };
 
-const Rating = ({ rating, ...restProps }) => {
+const Rating = ({ rating, starProps, ...restProps }) => {
   return (
-    <div {...restProps} className={classnames(styles.root)}>
-      {renderStars(rating, restProps)}
+    <div {...restProps}>
+      {renderStars(rating, starProps)}
     </div>
   );
 };
@@ -46,7 +48,7 @@ Rating.displayName = 'Rating';
 Rating.propTypes = {
   rating: PropTypes.number.isRequired,
   className: PropTypes.string,
-  svgClassName: PropTypes.string
+  starProps: PropTypes.object
 };
 
 export default Rating;

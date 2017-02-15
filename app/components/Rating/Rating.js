@@ -25,14 +25,14 @@ const specs = {
   }
 };
 
-function getSpec(specsObj) {
+const getSpec = specsObj => {
   return Object.keys(specsObj).reduce((result, specName) => ({
     ...result,
     ...(specsObj[specName] ? specs[specName] : {})
   }), {});
-}
+};
 
-export default class DropDownDemo extends Component {
+export default class RatingDemo extends Component {
   constructor() {
     super();
 
@@ -54,11 +54,13 @@ export default class DropDownDemo extends Component {
 
     const spec = getSpec({
       default: true
-
     });
 
     const rating = (
-      <SeekRating rating={3.4} className={styles.icon} />
+      <SeekRating
+        rating={3.4}
+        starProps={{ svgClassName: styles.rating }}
+      />
     );
 
     return (
