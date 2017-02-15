@@ -1,9 +1,5 @@
 @import (reference) "~seek-style-guide/theme";
 
-.input {
-  width: 300px;
-}
-
 .sandboxContainer {
   background-color: @sk-white;
 }
@@ -26,4 +22,11 @@
   &:not(:last-child) {
     margin-right: @grid-gutter-width * 3;
   }
+}
+
+@iconSize: (@grid-row-height * 4);
+
+.icon {
+  width: @iconSize;
+  height: @iconSize;
 }

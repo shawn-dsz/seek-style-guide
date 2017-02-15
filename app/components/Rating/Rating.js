@@ -1,13 +1,10 @@
 import styles from './Rating.less';
-// import dropdownStyles from 'seek-style-guide/react/fields/Dropdown/Dropdown.less';
 
 import React, { Component } from 'react';
 import Baseline from 'react-baseline';
-// import classnames from 'classnames';
 
 import GridContainer from 'GridContainer/GridContainer';
 import SandboxPreview from 'SandboxPreview/SandboxPreview';
-import SandboxTogglePanel from 'SandboxTogglePanel/SandboxTogglePanel';
 import SandboxToggle from 'SandboxToggle/SandboxToggle';
 import Section from 'Section/Section';
 import HeadlineText from 'HeadlineText/HeadlineText';
@@ -18,13 +15,7 @@ import SeekRating from 'seek-style-guide/react/Rating/Rating';
 
 const specs = {
   default: {
-    Height: '5 grid rows',
-    'Internal gutters': '15px — @field-gutter-width',
-    'Margin bottom': '3 grid rows',
-    'Text color': '@sk-charcoal',
-    'Font scale': '1.8 — @interaction-type-scale',
-    Border: '1px — @sk-mid-gray-light',
-    'Border radius': '2px — @field-border-radius'
+    Height: '5 grid rows'
   },
   focus: {
     Border: '1px @sk-focus'
@@ -46,36 +37,10 @@ export default class DropDownDemo extends Component {
     super();
 
     this.state = {
-      focus: false,
-      invalid: false,
-      baseline: false,
-      help: false,
-      inputValue: ''
+      baseline: false
     };
 
-    this.toggleFocus = this.toggleFocus.bind(this);
-    this.toggleInvalid = this.toggleInvalid.bind(this);
     this.toggleBaseline = this.toggleBaseline.bind(this);
-    this.toggleHelp = this.toggleHelp.bind(this);
-    this.handleChange = this.handleChange.bind(this);
-  }
-
-  toggleFocus(event) {
-    this.setState({
-      focus: event.target.checked
-    });
-  }
-
-  toggleInvalid(event) {
-    this.setState({
-      invalid: event.target.checked
-    });
-  }
-
-  toggleHelp(event) {
-    this.setState({
-      help: event.target.checked
-    });
   }
 
   toggleBaseline(event) {
@@ -84,23 +49,16 @@ export default class DropDownDemo extends Component {
     });
   }
 
-  handleChange(event) {
-    this.setState({
-      inputValue: event.target.value
-    });
-  }
-
   render() {
-    const { focus, invalid, baseline, help } = this.state;
+    const { baseline } = this.state;
 
     const spec = getSpec({
-      default: true,
-      focus,
-      invalid
+      default: true
+
     });
 
     const rating = (
-      <SeekRating />
+      <SeekRating rating={3.4} className={styles.icon} />
     );
 
     return (
@@ -127,36 +85,6 @@ export default class DropDownDemo extends Component {
             </GridContainer>
           </div>
         </Baseline>
-
-        <SandboxTogglePanel>
-          <SandboxToggle
-            label="Focus"
-            toggleType="checkbox"
-            toggleProps={{
-              type: 'checkbox',
-              checked: focus,
-              onChange: this.toggleFocus
-            }}
-          />
-          <SandboxToggle
-            label="Invalid"
-            toggleType="checkbox"
-            toggleProps={{
-              type: 'checkbox',
-              checked: invalid,
-              onChange: this.toggleInvalid
-            }}
-          />
-          <SandboxToggle
-            label="Help"
-            toggleType="checkbox"
-            toggleProps={{
-              type: 'checkbox',
-              checked: help,
-              onChange: this.toggleHelp
-            }}
-          />
-        </SandboxTogglePanel>
 
         <GridContainer className={styles.gridContainer}>
           <Section className={styles.section}>
