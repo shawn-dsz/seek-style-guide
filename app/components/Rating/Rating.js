@@ -16,12 +16,6 @@ import SeekRating from 'seek-style-guide/react/Rating/Rating';
 const specs = {
   default: {
     Height: '5 grid rows'
-  },
-  focus: {
-    Border: '1px @sk-focus'
-  },
-  invalid: {
-    Border: '1px @sk-pink'
   }
 };
 
@@ -59,7 +53,7 @@ export default class RatingDemo extends Component {
     const rating = (
       <SeekRating
         rating={3.4}
-        starProps={{ svgClassName: styles.rating }}
+        starClassName={styles.rating}
       />
     );
 
