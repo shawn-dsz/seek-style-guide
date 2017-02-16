@@ -11,7 +11,7 @@ const getPercent = (rating, position) => Math.round(Math.min(Math.max(rating - p
 
 const getStar = (percent, key, starClassName) => {
   const props = {
-    key,
+    key: `star-${key}`,
     className: styles.starContainer,
     svgClassName: starClassName
   };
@@ -27,23 +27,16 @@ const getStar = (percent, key, starClassName) => {
   return <StarIcon {...props} />;
 };
 
-const renderStars = (rating, starClassName) => {
-  const stars = [];
-  for (let position = 0; position < 5; position++) {
-    const percent = getPercent(rating, position);
-    stars.push(getStar(percent, position, starClassName));
-  }
-
-  return stars;
-};
-
 const Rating = ({ rating, starClassName, ...restProps }) => {
   return (
     <div {...restProps}>
       <ScreenReaderOnly>
         {rating} overall rating
       </ScreenReaderOnly>
-      {renderStars(rating, starClassName)}
+      {[...Array(5)].map((v, position) => {
+        const percent = getPercent(rating, position);
+        return getStar(percent, position, starClassName);
+      })}
     </div>
   );
 };
