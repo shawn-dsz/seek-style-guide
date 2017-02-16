@@ -1,6 +1,7 @@
 import styles from './Rating.less';
+
 import React, { PropTypes } from 'react';
-import classnames from 'classnames';
+
 import StarIcon from '../icons/StarIcon/StarIcon';
 import halfStar from './halfStar.svg';
 import Icon from '../icons/icon';
