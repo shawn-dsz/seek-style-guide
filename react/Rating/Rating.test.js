@@ -77,7 +77,7 @@ describe('Rating', () => {
     });
 
     it('should apply `className`', () => {
-      render(<Rating rating={5.0} className={'root-classd-name'} />);
+      render(<Rating rating={5.0} className={'root-class-name'} />);
       expect(rating.props.className).to.equal('root-class-name');
     });
   });
