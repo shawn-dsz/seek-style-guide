@@ -13,7 +13,6 @@ const titles = {
   '/textarea': 'textarea',
   '/monthpicker': 'month picker',
   '/dropdown': 'dropdown',
-  '/rating': 'rating',
   '/checkbox': 'checkbox',
   '/typography': 'typography',
   '/playground': 'playground'
