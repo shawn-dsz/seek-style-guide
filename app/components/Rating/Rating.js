@@ -15,7 +15,7 @@ import SeekRating from 'seek-style-guide/react/Rating/Rating';
 
 const specs = {
   default: {
-    Height: '5 grid rows'
+    Height: '2 grid rows'
   }
 };
 
@@ -50,12 +50,7 @@ export default class RatingDemo extends Component {
       default: true
     });
 
-    const rating = (
-      <SeekRating
-        rating={3.4}
-        starClassName={styles.rating}
-      />
-    );
+    const rating = (<SeekRating rating={2.6} />);
 
     return (
       <div>
